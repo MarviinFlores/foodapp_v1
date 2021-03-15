@@ -1,4 +1,4 @@
-package com.example.orderingfood;
+package com.example.orderingfood.adapter;
 
 
 import android.content.Context;
@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.orderingfood.R;
 
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
         holder.popularName.setText(popularList.get(position).getName());
 
         // for image  add Glide Lib dependency for image fetching for a server
-                //fetching image from API
+                //fetching image from API to Recycler View
         Glide.with(context).load(popularList.get(position).getImageUrl()).into(holder.popularImage);
 
 
