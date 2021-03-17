@@ -20,7 +20,7 @@ import Model.Recommended;
 public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.RecommendedViewHolder> {
 
     private Context context;
-    pgitrivate List<Recommended>recommendedList;
+    private List<Recommended>recommendedList;
 
     public RecommendedAdapter(Context context, List<Recommended> recommendedList) {
         this.context = context;
@@ -42,6 +42,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
         holder.recommendedRating.setText(recommendedList.get(position).getRating());
         holder.recommendedCharges.setText(recommendedList.get(position).getDeliveryCharges());
         holder.recommendedDeliveryTime.setText(recommendedList.get(position).getDeliveryTime());
+        holder.recommendedPrice.setText("$"+recommendedList.get(position).getPrice());
 
         Glide.with(context).load(recommendedList.get(position).getImageUrl()).into(holder.recommendedImage);
 
@@ -55,7 +56,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
     public static class RecommendedViewHolder extends RecyclerView.ViewHolder {
 
         ImageView recommendedImage;
-        TextView recommendedName,recommendedRating,recommendedDeliveryTime,recommendedCharges;
+        TextView recommendedName,recommendedRating,recommendedDeliveryTime,recommendedCharges,recommendedPrice;
 
         public RecommendedViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -65,6 +66,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
             recommendedRating = itemView.findViewById(R.id.recommended_rating);
             recommendedDeliveryTime = itemView.findViewById(R.id.recommended_delivery_time);
             recommendedCharges = itemView.findViewById(R.id.delivery_type);
+            recommendedPrice = itemView.findViewById(R.id.recommended_price);
 
         }
     }

@@ -7,11 +7,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.orderingfood.adapter.AllMenuAdapter;
 import com.example.orderingfood.adapter.PopularAdapter;
 import com.example.orderingfood.adapter.RecommendedAdapter;
 
 import java.util.List;
 
+import Model.Allmenu;
 import Model.FoodData;
 import Model.Popular;
 import Model.Recommended;
@@ -25,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
 
     ApiInterface apiInterface;
 
-    RecyclerView popularRecyclerView;
-    RecyclerView recommendedRecyclerView;
+    RecyclerView popularRecyclerView,recommendedRecyclerView, allMenuRecyclerView;
+
 
     PopularAdapter popularAdapter;
     RecommendedAdapter recommendedAdapter;
+    AllMenuAdapter allMenuAdapter;
 
 
     @Override
@@ -48,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                 List<FoodData> foodDataList = response.body();
                 getPopularData(foodDataList.get(0).getPopular());
                 getRecommendedData(foodDataList.get(0).getRecommended());
+                getAllMenu(foodDataList.get(0).getAllmenu());
             }
 
             @Override
@@ -75,5 +79,13 @@ public class MainActivity extends AppCompatActivity {
         RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
         recommendedRecyclerView.setLayoutManager(layoutManager);
         recommendedRecyclerView.setAdapter(recommendedAdapter);
+    }
+
+    private void getAllMenu (List<Allmenu> allmenuList){
+        allMenuRecyclerView= findViewById(R.id.all_menu_recycler);
+        allMenuAdapter = new AllMenuAdapter(this,allmenuList);
+        RecyclerView.LayoutManager layoutManager =  new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
+        allMenuRecyclerView.setLayoutManager(layoutManager);
+        allMenuRecyclerView.setAdapter(allMenuAdapter);
     }
 }
