@@ -1,6 +1,7 @@
 package com.example.orderingfood.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.orderingfood.FoodDetails;
 import com.example.orderingfood.R;
 
 import java.util.List;
@@ -34,8 +36,8 @@ public class AllMenuAdapter extends RecyclerView.Adapter< AllMenuAdapter.AllMenu
         return new AllMenuViewHolder(view);
     }
 
-    @Override
-    public void onBindViewHolder(@NonNull AllMenuViewHolder holder, int position) {
+    @Override 
+    public void onBindViewHolder(@NonNull AllMenuViewHolder holder, final int position) {
         // PARSING DATA
         holder.popularName.setText(allmenuList.get(position).getName());
         holder.popularNote.setText(allmenuList.get(position).getNote());
@@ -47,6 +49,22 @@ public class AllMenuAdapter extends RecyclerView.Adapter< AllMenuAdapter.AllMenu
         // PARSING IMAGE
 
         Glide.with(context).load(allmenuList.get(position).getImageUrl()).into(holder.popularImage);
+
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(context, FoodDetails.class);
+                i.putExtra("name", allmenuList.get(position).getName());
+                i.putExtra("price", allmenuList.get(position).getPrice());
+                i.putExtra("rating", allmenuList.get(position).getRating());
+                i.putExtra("rating", allmenuList.get(position).getImageUrl());
+
+                context.startActivity(i);
+
+            }
+        });
+
 
 
 
