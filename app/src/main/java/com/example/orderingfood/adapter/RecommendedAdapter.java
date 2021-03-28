@@ -55,7 +55,7 @@ public class RecommendedAdapter extends RecyclerView.Adapter<RecommendedAdapter.
                 i.putExtra("name", recommendedList.get(position).getName());
                 i.putExtra("price", recommendedList.get(position).getPrice());
                 i.putExtra("rating", recommendedList.get(position).getRating());
-                i.putExtra("rating", recommendedList.get(position).getImageUrl());
+                i.putExtra("image", recommendedList.get(position).getImageUrl());
 
                 context.startActivity(i);
 

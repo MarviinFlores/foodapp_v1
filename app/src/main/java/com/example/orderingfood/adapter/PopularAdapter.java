@@ -53,7 +53,7 @@ public class PopularAdapter extends RecyclerView.Adapter<PopularAdapter.PopularV
                 i.putExtra("name", popularList.get(position).getName());
                 i.putExtra("price", popularList.get(position).getPrice());
                 i.putExtra("rating", popularList.get(position).getRating());
-                i.putExtra("rating", popularList.get(position).getImageUrl());
+                i.putExtra("image", popularList.get(position).getImageUrl());
 
                 context.startActivity(i);
 
